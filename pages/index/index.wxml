@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="container">
+  <navigator url=""><button>进入直播大厅</button></navigator>
+  <navigator url="../live_player/live_player" class="push_live"><button>进入直播间</button></navigator>
+   <navigator url="" class="push_live"><button>我要直播</button></navigator>
+</view>
