@@ -8,6 +8,49 @@ Page({
 
   },
 
+  statechange(e) {
+    console.log('live-pusher code:', e.detail.code)
+  },
+  bindSwitchCamera() {
+    this.ctx.switchCamera({
+      success: res => {
+        console.log('switchCamera success')
+      },
+      fail: res => {
+        console.log('switchCamera fail')
+      }
+    })
+  },
+  bindStart() {
+    this.ctx.start({
+      success: res => {
+        console.log('start success')
+      },
+      fail: res => {
+        console.log('start fail')
+      }
+    })
+  },
+  bindPause() {
+    this.ctx.pause({
+      success: res => {
+        console.log('pause success')
+      },
+      fail: res => {
+        console.log('pause fail')
+      }
+    })
+  },
+  bindStop() {
+    this.ctx.stop({
+      success: res => {
+        console.log('stop success')
+      },
+      fail: res => {
+        console.log('stop fail')
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -19,7 +62,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.ctx = wx.createLivePusherContext('pusher')
+    this.ctx.startPreview()
   },
 
   /**

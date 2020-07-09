@@ -1,6 +1,8 @@
 <view class="player-content">
+<!-- src="rtmp://mini-live.digilinx.net.cn:1935/live/test" -->
   <live-player 
-    src="rtmp://192.168.1.42:1935/live/test"
+    
+    src="rtmp://192.168.0.16:1935/live/test"
     mode="LIVE"
     autoplay
     bindstatechange="statechange"

@@ -64,6 +64,12 @@
 					"pathName": "pages/live_player/live_player",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我要直播",
+					"pathName": "pages/live_pusher/live_pusher",
+					"scene": null
 				}
 			]
 		}

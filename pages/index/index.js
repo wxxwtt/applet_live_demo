@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 Page({
   data: {
     motto: 'Hello World',
@@ -50,5 +50,8 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  room() {
+    Toast('暂未开通');
   }
 })
