@@ -5,26 +5,48 @@ Page({
    * 页面的初始数据
    */
   data: {
-    loading: true
+    liveSatus: 0,
+    fullScreen: false,
+    screenFooterShow: false
   },
   statechange(e) {
     console.log('live-player code:', e.detail.code)
-    const {
+    let { liveSatus } = this.data.liveSatus
+    let {
       code
     } = e.detail
-    if (code === 2004) {
-      this.setData({
-        loading: false
-      })
-    }
+    liveSatus = code
+    this.setData({liveSatus})
+    
   },
   error(e) {
     console.error('live-player error:', e.detail.errMsg)
+  },
+  screenClick() {
+    this.setData({ screenFooterShow: true  })
+  },
+  fullScreenChange(e) {
+    const { type } = e.currentTarget.dataset
+    const { fullScreen } = this.data
+    if( type == 1) { // 进入全屏
+      this.ctx.requestFullScreen({
+        success:function(){
+          this.setData({fullScreen: true})
+        }
+      })
+    }else { // 退出全屏
+      this.ctx.exitFullScreen({
+        success:function(){
+          this.setData({fullScreen: false})
+        }
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.ctx = wx.createLivePlayerContext ('player')
 
   },
 

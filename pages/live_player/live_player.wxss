@@ -6,11 +6,11 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   padding: 10rpx 20rpx;
   font-size: 28rpx;
   color: #fff;
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 4px 4px 0;
 }
 .live-loading {
   color: #fff;
@@ -19,10 +19,8 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
-.live-loading {
-  background: none;
-  border: none;
-}
+
+
 .van-loading__spinner {
   box-sizing: border-box;
   width: 30px;
@@ -35,8 +33,23 @@
   animation: van-rotate .8s linear infinite;
   -webkit-animation: van-rotate var(--loading-spinner-animation-duration,.8s) linear infinite;
   animation: van-rotate var(--loading-spinner-animation-duration,.8s) linear infinite;
-  background: none;
-  border: none;
-
   }
-  
+  .van-button--info {
+    background: none !important;
+    border: none !important;
+  }
+.player-footer {
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  height: 60rpx;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  align-items: center;
+  justify-content: flex-end;
+  line-height: 60rpx;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+}

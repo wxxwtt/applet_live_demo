@@ -1,8 +1,8 @@
-<view class="player-content">
+<view class="player-content"  bindtap="screenClick">
 <!-- src="rtmp://mini-live.digilinx.net.cn:1935/live/test" -->
   <live-player 
     
-    src="rtmp://192.168.0.16:1935/live/test"
+    src="rtmp://58.200.131.2:1935/livetv/hunantv"
     mode="LIVE"
     autoplay
     bindstatechange="statechange"
@@ -14,7 +14,14 @@
 
   </live-player >
 
-  <van-button class="live-loading" wx:if="{{ loading }}" loading type="info" loading-text="加载中..." />
-  <view class="live-text" wx:else>正在直播</view>
+  <van-button class="live-loading" wx:if="{{ liveSatus === 0 || liveSatus === 2002}}" loading type="info" loading-text="加载中..." />
+  <van-button class="live-loading" wx:if="{{ liveSatus === 2006 }}" type="warning">直播已结束</van-button>
+  <van-button class="live-loading" wx:if="{{ liveSatus === -2301 }}" type="warning">获取直播异常,请退出重试</van-button>
+  <!-- <view class="live-text" wx:if="{{ liveSatus === 2003 || liveSatus === 2004 }}">直播中</view> -->
+  <view class="player-footer" wx:if="{{ screenFooterShow }}">
+    <icon class="iconfont icon-map-fullscreen" wx:if="{{ !fullScreen }}" bindtap="fullScreenChange" data-type="1"></icon>
+    <icon class="iconfont icon-tuichuquanping1" wx:else bindtap="fullScreenChange" data-type="2"></icon>
+  </view>
 </view>
+
 
