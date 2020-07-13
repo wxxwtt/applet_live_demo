@@ -1,11 +1,11 @@
-// pages/live_pusher/live_pusher.js
+import { GET } from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    pusherUrl: 'rtmp://mini-live.digilinx.net.cn:1935/live/'
   },
 
   statechange(e) {
@@ -21,15 +21,43 @@ Page({
       }
     })
   },
-  bindStart() {
-    this.ctx.start({
-      success: res => {
-        console.log('start success')
-      },
-      fail: res => {
-        console.log('start fail')
+   bindStart () {
+
+      const { pusherUrl } = this.data
+      let  pusherId = ''
+      try {
+        wx.getStorage({
+          key: 'pusherId',
+          success: (res) => {
+            this.setData({pusherUrl: pusherUrl + pusherId})
+            
+          },
+          fail: async (err) => {
+            const { char } = await GET('/index.php?type=add')
+            console.log(char)
+            wx.setStorage({
+              key:"pusherId",
+              data: char
+            })
+            this.setData({pusherUrl: pusherUrl + char})
+          }
+        })
+
+      } catch (error) {
+        console.log(error)
       }
-    })
+
+     
+      this.ctx.start({
+        success: res => {
+          console.log('start success')
+        },
+        fail: res => {
+          console.log('start fail')
+        }
+      })
+
+   
   },
   bindPause() {
     this.ctx.pause({

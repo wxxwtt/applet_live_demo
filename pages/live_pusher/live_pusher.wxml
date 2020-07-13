@@ -2,7 +2,7 @@
     <!-- url="rtmp://mini-live.digilinx.net.cn:1935/live/test" -->
 
   <live-pusher 
-    :url="http://mini-live.digilinx.net.cn/index.php?type=add"
+    url="{{ pusherUrl }}"
     mode="RTC"
     bindstatechange="statechange"
     style="width: 100%; height: 100%;"
