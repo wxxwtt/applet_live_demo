@@ -52,4 +52,5 @@
   line-height: 60rpx;
   box-sizing: border-box;
   padding: 0 20rpx;
+  z-index: 9999999999999999999;
 }

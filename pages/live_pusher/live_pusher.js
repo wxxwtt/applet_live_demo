@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pusherUrl: 'rtmp://mini-live.digilinx.net.cn:1935/live/'
+    pusherUrl: 'rtmp://mini-live.digilinx.net.cn:1935/live/',
+    roomId: ''
   },
 
   statechange(e) {
@@ -22,15 +23,13 @@ Page({
     })
   },
    bindStart () {
-
       const { pusherUrl } = this.data
-      let  pusherId = ''
+
       try {
         wx.getStorage({
           key: 'pusherId',
           success: (res) => {
-            this.setData({pusherUrl: pusherUrl + pusherId})
-            
+            this.setData({pusherUrl: pusherUrl + res.data,roomId: res.data})
           },
           fail: async (err) => {
             const { char } = await GET('/index.php?type=add')
@@ -39,7 +38,7 @@ Page({
               key:"pusherId",
               data: char
             })
-            this.setData({pusherUrl: pusherUrl + char})
+            this.setData({pusherUrl: pusherUrl + char,roomId: char})
           }
         })
 

@@ -5,11 +5,12 @@ image {
   position: relative;
 }
 .join-live-room {
+  width: auto;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
-  color: rgb(242, 25, 250);
-  text-shadow:0px 0px 5rpx rgb(205, 2, 212);
+  color: #fff;
+  text-shadow:0px 0px 5rpx rgb(223, 223, 223);
   font-size: 20px;
 }

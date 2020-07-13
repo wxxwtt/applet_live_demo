@@ -10,7 +10,7 @@ Page({
     fullScreen: false,
     screenFooterShow: false,
     id: null,
-    url: 'rtmp://192.168.0.16:1935/live/'
+    url: 'rtmp://mini-live.digilinx.net.cn:1935/live/'
   },
   statechange(e) {
     console.log('live-player code:', e.detail.code)
@@ -27,27 +27,27 @@ Page({
   },
   screenClick() {
     this.setData({ screenFooterShow: true  })
+    setTimeout(() => {
+      this.setData({ screenFooterShow: false  })
+
+    },3000)
   },
   fullScreenChange(e) {
     const { type } = e.currentTarget.dataset
-    console.log(type)
 
     if( type == 1) { // 进入全屏
+      console.log(type)
       this.ctx.requestFullScreen({
         success:() => {
-          console.log(11111)
           this.setData({fullScreen: true})
         },
         fail:e => {
-          console.log(e)
-        },
-        complete: e => {
           console.log(e)
         }
       })
     }else { // 退出全屏
       this.ctx.exitFullScreen({
-        success:function(){
+        success: () => {
           this.setData({fullScreen: false})
         }
       })
@@ -59,7 +59,7 @@ Page({
   onLoad: function (options) {
     const { id } = options
     const { url } = this.data
-    this.setData({url: url + id})
+    this.setData({url: url + id,id})
     this.ctx = wx.createLivePlayerContext ('player')
 
   },

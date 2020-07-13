@@ -10,7 +10,7 @@
     mirror
   />
 </view>
-
+<view>房间号: {{ roomId }}</view>
 <button bindtap="bindSwitchCamera">切换摄像头</button>
 <button bindtap="bindStart">开启直播</button>
 <button bindtap="bindPause">暂停直播</button>
