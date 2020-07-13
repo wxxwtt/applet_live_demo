@@ -2,7 +2,7 @@
 <!-- src="rtmp://mini-live.digilinx.net.cn:1935/live/test" -->
   <live-player 
     
-    src="rtmp://58.200.131.2:1935/livetv/hunantv"
+    src="{{ url }}"
     mode="LIVE"
     autoplay
     bindstatechange="statechange"

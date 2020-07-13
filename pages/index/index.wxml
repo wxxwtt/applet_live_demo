@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <van-toast id="van-toast" />
 <view class="container">
-  <navigator bindtap="room"><button>进入直播大厅</button></navigator>
+  <navigator url="../player_list/play_list"><button>进入直播大厅</button></navigator>
   <navigator url="../live_player/live_player" class="push_live"><button>进入直播间</button></navigator>
   <navigator url="../live_pusher/live_pusher" class="push_live"><button>我要直播</button></navigator>
 </view>

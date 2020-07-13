@@ -1,4 +1,5 @@
 // pages/live_player/live_player.js
+
 Page({
 
   /**
@@ -7,7 +8,9 @@ Page({
   data: {
     liveSatus: 0,
     fullScreen: false,
-    screenFooterShow: false
+    screenFooterShow: false,
+    id: null,
+    url: 'rtmp://192.168.0.16:1935/live/'
   },
   statechange(e) {
     console.log('live-player code:', e.detail.code)
@@ -27,11 +30,19 @@ Page({
   },
   fullScreenChange(e) {
     const { type } = e.currentTarget.dataset
-    const { fullScreen } = this.data
+    console.log(type)
+
     if( type == 1) { // 进入全屏
       this.ctx.requestFullScreen({
-        success:function(){
+        success:() => {
+          console.log(11111)
           this.setData({fullScreen: true})
+        },
+        fail:e => {
+          console.log(e)
+        },
+        complete: e => {
+          console.log(e)
         }
       })
     }else { // 退出全屏
@@ -46,6 +57,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const { id } = options
+    const { url } = this.data
+    this.setData({url: url + id})
     this.ctx = wx.createLivePlayerContext ('player')
 
   },

@@ -69,6 +69,14 @@
 					"id": -1,
 					"name": "我要直播",
 					"pathName": "pages/live_pusher/live_pusher",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "直播大厅",
+					"pathName": "pages/player_list/play_list",
+					"query": "",
 					"scene": null
 				}
 			]

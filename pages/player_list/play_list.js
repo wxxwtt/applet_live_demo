@@ -1,18 +1,29 @@
 // pages/player_list/play_list.js
+import { GET } from '../../utils/request'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    roomList: []
+  },
+  async getRoomList () {
+    const  { list }  =  await GET('/index.php')
+    this.setData({roomList: list})
 
   },
-
+  enterRoom (e) {
+    const { id } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `../live_player/live_player?id=${id}`,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getRoomList()
   },
 
   /**

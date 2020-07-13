@@ -1,1 +1,15 @@
-/* pages/player_list/play_list.wxss */
+image {
+  width: 100%;
+}
+.image-item {
+  position: relative;
+}
+.join-live-room {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  color: rgb(242, 25, 250);
+  text-shadow:0px 0px 5rpx rgb(205, 2, 212);
+  font-size: 20px;
+}
