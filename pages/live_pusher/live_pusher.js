@@ -22,29 +22,41 @@ Page({
       }
     })
   },
-   bindStart () {
+   async bindStart () {
       const { pusherUrl } = this.data
-
-      try {
-        wx.getStorage({
-          key: 'pusherId',
-          success: (res) => {
-            this.setData({pusherUrl: pusherUrl + res.data,roomId: res.data})
-          },
-          fail: async (err) => {
-            const { char } = await GET('/index.php?type=add')
+      const roomId = wx.getStorageSync('roomId')
+      if(roomId) {
+        this.setData({pusherUrl: pusherUrl + roomId,roomId})
+      } else {
+        const { char } = await GET('/index.php?type=add')
             console.log(char)
-            wx.setStorage({
+            wx.setStorageSync({
               key:"pusherId",
               data: char
             })
-            this.setData({pusherUrl: pusherUrl + char,roomId: char})
-          }
-        })
-
-      } catch (error) {
-        console.log(error)
+        this.setData({pusherUrl: pusherUrl + char,roomId: char}) 
       }
+
+      // try {
+      //   wx.getStorage({
+      //     key: 'pusherId',
+      //     success: (res) => {
+      //       this.setData({pusherUrl: pusherUrl + res.data,roomId: res.data})
+      //     },
+      //     fail: async (err) => {
+      //       const { char } = await GET('/index.php?type=add')
+      //       console.log(char)
+      //       wx.setStorage({
+      //         key:"pusherId",
+      //         data: char
+      //       })
+      //       this.setData({pusherUrl: pusherUrl + char,roomId: char})
+      //     }
+      //   })
+
+      // } catch (error) {
+      //   console.log(error)
+      // }
 
      
       this.ctx.start({
