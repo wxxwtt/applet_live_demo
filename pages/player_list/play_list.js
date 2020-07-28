@@ -10,7 +10,8 @@ Page({
   },
   async getRoomList () {
     const  { list }  =  await GET('/index.php')
-    this.setData({roomList: list})
+    this.setData({roomList: list.reverse()})
+   
 
   },
   enterRoom (e) {

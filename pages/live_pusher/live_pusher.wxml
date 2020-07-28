@@ -1,14 +1,16 @@
 <view class="player-content">
     <!-- url="rtmp://mini-live.digilinx.net.cn:1935/live/test" -->
 
-  <live-pusher 
-    url="{{ pusherUrl }}"
+  <live-pusher
+    id="pusher"
+    url="{{ url }}"
     mode="RTC"
     bindstatechange="statechange"
     style="width: 100%; height: 100%;"
     local-mirror="enable"
     mirror
   />
+
 </view>
 <view>房间号: {{ roomId }}</view>
 <button bindtap="bindSwitchCamera">切换摄像头</button>

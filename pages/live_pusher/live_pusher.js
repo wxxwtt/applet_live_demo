@@ -6,7 +6,8 @@ Page({
    */
   data: {
     pusherUrl: 'rtmp://mini-live.digilinx.net.cn:1935/live/',
-    roomId: ''
+    roomId: '',
+    url: ''
   },
 
   statechange(e) {
@@ -26,38 +27,19 @@ Page({
       const { pusherUrl } = this.data
       const roomId = wx.getStorageSync('roomId')
       if(roomId) {
-        this.setData({pusherUrl: pusherUrl + roomId,roomId})
+        if(pusherUrl.includes(roomId)) {
+          this.setData({pusherUrl: pusherUrl,roomId,url: pusherUrl})
+
+        }else {
+          this.setData({pusherUrl: pusherUrl + roomId, roomId, url: pusherUrl + roomId })
+          
+        }
       } else {
+
         const { char } = await GET('/index.php?type=add')
-            console.log(char)
-            wx.setStorageSync({
-              key:"pusherId",
-              data: char
-            })
-        this.setData({pusherUrl: pusherUrl + char,roomId: char}) 
+        wx.setStorageSync('roomId', char)
+        this.setData({pusherUrl: pusherUrl + char,roomId: char, url: pusherUrl + roomId}) 
       }
-
-      // try {
-      //   wx.getStorage({
-      //     key: 'pusherId',
-      //     success: (res) => {
-      //       this.setData({pusherUrl: pusherUrl + res.data,roomId: res.data})
-      //     },
-      //     fail: async (err) => {
-      //       const { char } = await GET('/index.php?type=add')
-      //       console.log(char)
-      //       wx.setStorage({
-      //         key:"pusherId",
-      //         data: char
-      //       })
-      //       this.setData({pusherUrl: pusherUrl + char,roomId: char})
-      //     }
-      //   })
-
-      // } catch (error) {
-      //   console.log(error)
-      // }
-
      
       this.ctx.start({
         success: res => {

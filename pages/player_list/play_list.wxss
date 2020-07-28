@@ -5,7 +5,8 @@ image {
   position: relative;
 }
 .join-live-room {
-  width: auto;
+  width: 100%;
+  text-align: center;
   position: absolute;
   left: 50%;
   top: 50%;

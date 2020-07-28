@@ -50,8 +50,5 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  },
-  room() {
-    Toast('暂未开通');
   }
 })

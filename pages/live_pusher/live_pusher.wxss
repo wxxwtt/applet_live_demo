@@ -2,3 +2,7 @@
   position: relative;
   height: 450rpx;
 }
+button {
+  width: 60%;
+  margin-top: 30rpx;
+}

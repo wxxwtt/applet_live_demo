@@ -1,9 +1,9 @@
 <!--pages/player_list/play_list.wxml-->
 <view>
 
-  <view class="image-item" bindtap="enterRoom" wx:for="{{ roomList }}" data-id="{{ item }}">
+  <view class="image-item" bindtap="enterRoom" wx:for="{{ roomList }}" data-id="{{ item }}" id="{{ item }}" wx:key="item">
     <image src="https://img.yzcdn.cn/vant/cat.jpeg" ></image>
-    <text class="join-live-room">进入直播间:{{ item }}</text>
+    <view class="join-live-room">进入直播间:{{ item }}</view>
 
   </view>
 </view>
